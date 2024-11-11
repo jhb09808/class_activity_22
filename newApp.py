@@ -1,25 +1,30 @@
+# Home.py
 import streamlit as st
+
+st.set_page_config(page_title="My Dashboard", page_icon="📊", layout="wide")
+
+st.title("Welcome to My Dashboard")
+st.write("Navigate using the sidebar to explore different pages.")
+
+# pages/1_Data_Overview.py
+import streamlit as st
+import plotly.express as px
 import pandas as pd
-import numpy as np
 
-# App Setup
-st.title("Simple Streamlit App")
+st.title("Data Overview")
 
-# Data Display
-st.write("Here's our first attempt at using data to create a table:")
-df = pd.DataFrame({
-    'first column': [1, 2, 3, 4],
-    'second column': [10, 20, 30, 40]
-})
-st.write(df)
+# Load and display data
+df = pd.read_csv("your_data.csv")
+st.dataframe(df)
 
-# User Interaction
-if st.button('Say hello'):
-    st.write('Why hello there!')
-else:
-    st.write('Goodbye')
+# Create and display a Plotly chart
+fig = px.scatter(df, x="column1", y="column2")
+st.plotly_chart(fig)
 
-# Data Visualization
-data = np.random.randn(20, 3)
-df2 = pd.DataFrame(data, columns=['a', 'b', 'c'])
-st.line_chart(df2)
+# pages/2_Deep_Dive.py
+import streamlit as st
+import plotly.graph_objects as go
+
+st.title("Deep Dive Analysis")
+
+# Add more complex visualizations and analysis here
